@@ -4,7 +4,6 @@ module.exports = {
   output: {
     filename: "[name].js"
   },
-  watch: true,
   devtool: "#eval-source-map",
   module: {
     loaders: [

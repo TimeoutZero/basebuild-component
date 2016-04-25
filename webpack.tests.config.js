@@ -1,9 +1,13 @@
+var path = require("path");
+
 module.exports = {
+    entry: "./tests/index.js",
     output: {
-        filename: 'test.build.js',
-        path: 'tests/',
-        publicPath: 'http://localhost:9123/tests'
+        path: path.resolve(__dirname + 'tests'),
+        publicPath: '/tests/',
+        filename: 'test.build.js'
     },
+    context: __dirname,
     devtool: "#eval",
     module: {
         loaders: [
@@ -26,6 +30,7 @@ module.exports = {
         ]
     },
     devServer: {
+        contentBase: "tests/",
         host: "localhost",
         port: "9123"
     }
