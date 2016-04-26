@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(options){
-  var gulp    = require('gulp'),
+  var gulp    = require(options.modules.gulp.uses),
       gutil   = require("gulp-util"),
       webpack = require("webpack"),
       named   = require('vinyl-named'),
@@ -12,7 +12,7 @@ module.exports = function(options){
 
   gulp.task("devTest", function(callback){
     // Start a webpack-dev-server
-    var configs = options.modules.bundler.webpackTestConfig;
+    var configs = options.modules.unitTests.webpackTestConfig;
     configs.entry = "mocha?reporter=nyan&ui=tdd!" + configs.entry;
     var compiler = webpack(configs);
 
@@ -46,7 +46,7 @@ module.exports = function(options){
       .pipe(named(function(file){
         return "test.bundle.js";
       }))
-      .pipe(webpackStream(options.modules.bundler.webpackTestConfig))
+      .pipe(webpackStream(options.modules.unitTests.webpackTestConfig))
       .pipe(gulp.dest(options.tmp + "/"));
   })
 

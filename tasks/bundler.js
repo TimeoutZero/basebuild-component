@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(options){
-  var gulp    = require('gulp'),
+  var gulp    = require(options.modules.gulp.uses),
       named   = require('vinyl-named'),
       path    = require('path'),
       webpackStream    = require('webpack-stream');
