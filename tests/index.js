@@ -3,6 +3,6 @@ if(typeof window != 'undefined'){
   require("mocha/mocha.css");
 }
 
-var context = require.context("../src", true, /.+\.spec\.js$/);
+var context = require.context("$projectRoot/src", true, /.+\.spec\.js$/);
 context.keys().forEach(context);
 module.exports = context;

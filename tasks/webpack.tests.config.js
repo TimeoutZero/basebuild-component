@@ -1,18 +1,29 @@
-var path = require("path");
+var path  = require("path");
+var webpack = require("webpack");
+var contextReplacementPluginCallback = function(options) {
+    options.request = options.request.replace("$projectRoot", process.cwd());
+    return options;
+};
 
 module.exports = {
-    entry: "./tests/index.js",
+    entry: __dirname + "/../tests/index.js",
     output: {
         path: '/tests',
         publicPath: '/tests/',
         filename: 'test.build.js'
     },
     devtool: "#eval",
+    plugins : [
+        new webpack.ContextReplacementPlugin(/\$projectRoot.*/, contextReplacementPluginCallback)
+    ],
     module: {
         loaders: [
-            {
-                test: /\.js$/,
-                loaders: ['babel-loader']
+            { test: /\.jsx?$/,
+                loader: 'babel',
+                exclude: /(node_modules|bower_components)/,
+                query: {
+                    presets: ['es2015']
+                }
             },
             {
                 test: /\.coffee$/,

@@ -20,7 +20,7 @@ module.exports = function(options){
         path: '/tests',
         publicPath: '/tests/',
         filename: 'test.build.js',
-        contentBase: './tests',
+        contentBase: '../tests',
         stats: {
           colors: true
         }
