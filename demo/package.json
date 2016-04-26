@@ -1,0 +1,15 @@
+{
+  "name": "basebuild-component-demo",
+  "version": "0.0.1",
+  "description": "Demo project to test basebuild-component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "carloshpds <carloshpds@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7"
+  }
+}
