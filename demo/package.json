@@ -11,6 +11,6 @@
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.7",
-    "basebuild-component" : "0.0.2"
+    "basebuild-component" : "0.0.4"
   }
 }
