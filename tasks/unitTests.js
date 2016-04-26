@@ -5,21 +5,10 @@ module.exports = function(options){
       gutil   = require("gulp-util"),
       webpack = require("webpack"),
       named   = require('vinyl-named'),
-      debug   = require('gulp-debug'),
       path    = require('path'),
       mocha   = require('gulp-mocha'),
       webpackStream    = require('webpack-stream'),
       WebpackDevServer = require("webpack-dev-server");
-
-  gulp.task("bundle", function(){
-    return gulp
-      .src(options.src + "/**/*.entry.{js,jsx,coffee}")
-      .pipe(named(function(file){
-        return path.basename(file.path, ".entry" + path.extname(file.path));
-      }))
-      .pipe(webpackStream(options.modules.bundler.webpackConfig))
-      .pipe(gulp.dest(options.dist + "/"));
-  })
 
   gulp.task("devTest", function(callback){
     // Start a webpack-dev-server
@@ -28,7 +17,7 @@ module.exports = function(options){
     var compiler = webpack(configs);
 
     new WebpackDevServer(compiler, {
-        path: path.resolve(__dirname + 'tests'),
+        path: '/tests',
         publicPath: '/tests/',
         filename: 'test.build.js',
         contentBase: './tests',
@@ -60,7 +49,5 @@ module.exports = function(options){
       .pipe(webpackStream(options.modules.bundler.webpackTestConfig))
       .pipe(gulp.dest(options.tmp + "/"));
   })
-
-
 
 }

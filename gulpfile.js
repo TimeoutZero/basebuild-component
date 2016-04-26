@@ -8,10 +8,11 @@ var defaultOptions = {
   "tmp"     : './tmp',
   "modules" : {
     "bundler" : {
-      "webpackConfig" : require('./webpack.config.js'),
-      "webpackTestConfig" : require('./webpack.tests.config.js')
+      "webpackConfig" : require('./tasks/webpack.bundler.config.js'),
+      "webpackTestConfig" : require('./tasks/webpack.tests.config.js')
     }
   }
 }
 
-require('./bundler.js')(defaultOptions);
+require('./tasks/bundler.js')(defaultOptions);
+require('./tasks/unitTests.js')(defaultOptions);

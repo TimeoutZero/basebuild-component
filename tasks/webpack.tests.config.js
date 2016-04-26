@@ -3,11 +3,10 @@ var path = require("path");
 module.exports = {
     entry: "./tests/index.js",
     output: {
-        path: path.resolve(__dirname + 'tests'),
+        path: '/tests',
         publicPath: '/tests/',
         filename: 'test.build.js'
     },
-    context: __dirname,
     devtool: "#eval",
     module: {
         loaders: [
