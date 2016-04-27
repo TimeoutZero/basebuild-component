@@ -2,9 +2,13 @@
 
 module.exports = {
   output: {
-    filename: "[name].js"
+    filename: "[name].js",
+    library: "[name]",
+    libraryTarget: "umd"
   },
-  devtool: "#eval-source-map",
+  resolveLoader: {
+      root: path.join(__dirname, "../node_modules")
+  },
   module: {
     loaders: [
       /* Styles */
@@ -18,7 +22,7 @@ module.exports = {
         loader: 'babel',
         exclude: /(node_modules|bower_components)/,
         query: {
-          presets: ['es2015']
+          presets: [require.resolve('babel-preset-es2015')]
         }
       }
     ]
