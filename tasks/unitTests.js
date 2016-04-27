@@ -10,7 +10,7 @@ module.exports = function(options){
       webpackStream    = require('webpack-stream'),
       WebpackDevServer = require("webpack-dev-server");
 
-  gulp.task("devTest", function(callback){
+  gulp.task("test", function(callback){
     // Start a webpack-dev-server
     var configs = options.modules.unitTests.webpackTestConfig;
     configs.entry = "mocha-loader?reporter=nyan&ui=tdd!" + configs.entry;
@@ -35,7 +35,7 @@ module.exports = function(options){
   })
 
 
-  gulp.task('prodTest', ['bundleTest'], function () {
+  gulp.task('test:prod', ['bundleTest'], function () {
     return gulp.src(options.tmp + '/test.build.js', {read: false})
       .pipe(mocha({reporter: 'nyan'}));
   });
