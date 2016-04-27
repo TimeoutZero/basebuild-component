@@ -13,14 +13,14 @@ module.exports = function(options){
   gulp.task("devTest", function(callback){
     // Start a webpack-dev-server
     var configs = options.modules.unitTests.webpackTestConfig;
-    configs.entry = "mocha?reporter=nyan&ui=tdd!" + configs.entry;
+    configs.entry = "mocha-loader?reporter=nyan&ui=tdd!" + configs.entry;
     var compiler = webpack(configs);
 
     new WebpackDevServer(compiler, {
-        path: '/tests',
+        path: __dirname + '/../tests',
         publicPath: '/tests/',
         filename: 'test.build.js',
-        contentBase: '../tests',
+        contentBase: __dirname + '/../tests',
         stats: {
           colors: true
         }

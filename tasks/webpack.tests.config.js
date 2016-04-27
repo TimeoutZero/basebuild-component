@@ -16,13 +16,16 @@ module.exports = {
     plugins : [
         new webpack.ContextReplacementPlugin(/\$projectRoot.*/, contextReplacementPluginCallback)
     ],
+    resolveLoader: {
+        root: path.join(__dirname, "../node_modules")
+    },
     module: {
         loaders: [
             { test: /\.jsx?$/,
                 loader: 'babel',
                 exclude: /(node_modules|bower_components)/,
                 query: {
-                    presets: ['es2015']
+                    presets: [require.resolve('babel-preset-es2015')]
                 }
             },
             {
