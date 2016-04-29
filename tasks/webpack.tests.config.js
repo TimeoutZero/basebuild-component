@@ -19,14 +19,14 @@ module.exports = {
     resolveLoader: {
       root: path.join(__dirname, "../node_modules")
     },
-    isparta: {
-      embedSource: true,
-      noAutoWrap: true,
-      // these babel options will be passed only to isparta and not to babel-loader
-      babel: {
-        presets: ['es2015']
-      }
-    },
+    // isparta: {
+    //   embedSource: true,
+    //   noAutoWrap: true,
+    //   // these babel options will be passed only to isparta and not to babel-loader
+    //   babel: {
+    //     presets: ['es2015']
+    //   }
+    // },
     reporters: [ 'progress', 'coverage' ],
     coverageReporter: {
       type: 'html'
@@ -53,13 +53,13 @@ module.exports = {
             query: {
               presets: [require.resolve('babel-preset-es2015')]
             }
-          },
-          {
-            test: /\.js?$/,
-            include: path.resolve(process.cwd() + '/src/'),
-            exclude: [/\.spec\.js/],
-            loader: 'isparta'
           }
+          // {
+          //   test: /\.js?$/,
+          //   include: path.resolve(process.cwd() + '/src/'),
+          //   exclude: [/\.spec\.js/],
+          //   loader: 'isparta'
+          // }
       ]
     },
     devServer: {
