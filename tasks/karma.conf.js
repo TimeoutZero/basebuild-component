@@ -28,7 +28,7 @@ module.exports = function (config) {
       output: 'autowatch'
     },
     coverageReporter: {
-      dir: 'build/reports/coverage',
+      dir: 'coverage',
       reporters: [
           {type: 'text'},
           {
