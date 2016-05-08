@@ -9,8 +9,10 @@
   "author": "carloshpds <carloshpds@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "basebuild-component": "0.0.4",
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.7",
-    "basebuild-component" : "0.0.4"
+    "karma-webpack": "^1.7.0",
+    "webpack": "^1.13.0"
   }
 }

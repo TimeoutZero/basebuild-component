@@ -1,6 +1,8 @@
 'use strict';
 var path = require('path');
 
+var path  = require("path");
+
 module.exports = {
   output: {
     filename: "[name].js",

@@ -21,12 +21,23 @@ module.exports = {
     resolveLoader: {
       root: path.join(__dirname, "../node_modules")
     },
+<<<<<<< Updated upstream
+    // isparta: {
+    //   embedSource: true,
+    //   noAutoWrap: true,
+    //   // these babel options will be passed only to isparta and not to babel-loader
+    //   babel: {
+    //     presets: ['es2015']
+    //   }
+    // },
+    reporters: [ 'progress', 'coverage' ],
+    coverageReporter: {
+      type: 'html'
+    },
+=======
+>>>>>>> Stashed changes
     module: {
       loaders: [
-        {
-          test: /\.coffee$/,
-          loader: "coffee-loader"
-        },
         {
           test: /\.jsx?$/,
           loader: 'babel',
@@ -44,14 +55,30 @@ module.exports = {
           loader: 'null-loader'
         }
       ],
+<<<<<<< Updated upstream
+      preLoaders: [
+          { test: /\.jsx?$/,
+            loader: 'babel',
+            exclude: /(node_modules|bower_components)/,
+            query: {
+              presets: [require.resolve('babel-preset-es2015')]
+            }
+=======
       postLoaders: [
           {
-            test: /^(?!(.*\.spec\.js$|.*\.mock.js$)).*(\.jsx?|\.coffee)$/,
+            test: /^(?!(.*\.spec\.js$|.*\.mock.js$)).*\.jsx?$/,
             include: [
                 process.cwd() + '/src/'
             ],
             loader: 'istanbul-instrumenter'
+>>>>>>> Stashed changes
           }
+          // {
+          //   test: /\.js?$/,
+          //   include: path.resolve(process.cwd() + '/src/'),
+          //   exclude: [/\.spec\.js/],
+          //   loader: 'isparta'
+          // }
       ]
     },
     devServer: {
