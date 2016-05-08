@@ -48,7 +48,7 @@ function basebuildMainScript(options){
       _.isFunction(moduleFunction) && moduleFunction(options);
     }
 
-    !bbModule.notLogOnStart && bbModule.isEnabled  !== false && console.log( chalk.white( '[ basebuild-component] ') + useMode + category + chalk.magenta(key) + ' module as ' + chalk.magenta(value) );
+    !bbModule.notLogOnStart && bbModule.isEnabled  !== false && console.log( chalk.white( '[ basebuild-component ] ') + useMode + category + chalk.magenta(key) + ' module as ' + chalk.magenta(value) );
   }
 
   console.log('\n');
