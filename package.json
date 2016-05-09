@@ -1,6 +1,6 @@
 {
   "name": "basebuild-component",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Project based on BaseBuild for abstract components",
   "main": "./scripts/main.js",
   "files": [
