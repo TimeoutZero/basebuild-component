@@ -1,6 +1,6 @@
 var webpack = require('webpack')
 var path = require('path');
-var webpackConfig = require(__dirname + '/webpack.tests.config.js');
+var webpackConfig = require(__dirname + '/../scripts/webpack.tests.config.js');
 webpackConfig.entry = {};
 
 module.exports = function (config) {
