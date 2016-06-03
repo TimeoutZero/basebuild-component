@@ -21,7 +21,7 @@ module.exports = function(options){
         console.log("done compiling")
         theServer.middleware.waitUntilValid(function(){
             console.log('Package is in a valid state', new Date());
-            console.log(theServer.middleware.fileSystem);
+            // console.log(theServer.middleware.fileSystem);
         });
     })
 
@@ -52,7 +52,7 @@ module.exports = function(options){
     //     });
     // })
 
-    console.log(theServer);
+    // console.log(theServer);
   })
 
 
