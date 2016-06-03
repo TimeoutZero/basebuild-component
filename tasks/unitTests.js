@@ -11,7 +11,7 @@ module.exports = function(options){
       WebpackDevServer = require("webpack-dev-server"),
       istanbul = require("gulp-istanbul");
 
-  gulp.task("test", function(callback){
+  gulp.task("test:auto", function(callback){
     // Start a webpack-dev-server
     var configs = options.modules.unitTests.webpackTestConfig;
     configs.entry = "mocha-loader?reporter=nyan&ui=tdd!" + configs.entry;
@@ -62,6 +62,7 @@ module.exports = function(options){
       .pipe(mocha({reporter: 'nyan'}))
       .pipe(istanbul.writeReports());
   });
+  gulp.task('test', ['test:prod']);
 
   gulp.task("bundleTest", function(){
     return gulp
