@@ -4,9 +4,9 @@
   "description": "Project based on BaseBuild for abstract components",
   "main": "./scripts/main.js",
   "files": [
-    "bbModules",
-    "scripts",
-    "tests"
+    "bbModules/**/*",
+    "scripts/**/*",
+    "tests/**/*"
   ],
   "scripts": {
     "testProd": "webpack ./tests/index.js --config ./webpack.tests.config.js --target node",
@@ -18,6 +18,13 @@
     "url": "git+https://github.com/TimeoutZero/basebuild-component.git"
   },
   "author": "RMassi",
+  "contributors" : [
+    {
+      "name"  : "Carlos Henrique",
+      "email" : "carloshpds@gmail.com",
+      "url"   : "https://github.com/carloshpds"
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/TimeoutZero/basebuild-component/issues"
