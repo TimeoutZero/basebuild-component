@@ -1,17 +1,16 @@
 'use strict';
-var path = require('path');
-
-var path  = require("path");
+const path  = require("path");
 
 module.exports = {
   output: {
-    filename: "[name].js",
+    filename: "[name]/[name].js",
     library: "[name]",
     libraryTarget: "umd"
   },
   resolveLoader: {
       root: path.join(__dirname, "../node_modules")
   },
+
   module: {
     loaders: [
       /* Styles */
@@ -31,9 +30,10 @@ module.exports = {
         }
       },
 
-      /* Coffee */
+      /* JSON */
       { test: /\.json$/,
-        loader: "null-loader" },
+        loader: "null-loader",
+        exclude: /(src)/ }
     ]
   }
 };
