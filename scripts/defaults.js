@@ -13,11 +13,11 @@ module.exports = function(){
       },
 
       bundler : {
-        defaultValue  : '../modules/bundler.js',
+        defaultValue  : '../bbtasks/bundler.js',
         webpackConfig : require('./webpack.bundler.config.js')
       },
       unitTests :{
-        defaultValue      : '../modules/unitTests.js',
+        defaultValue      : '../bbtasks/unitTests.js',
         webpackTestConfig : require('./webpack.tests.config.js')
       }
     }

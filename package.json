@@ -4,9 +4,9 @@
   "description": "Project based on BaseBuild for abstract components",
   "main": "./scripts/main.js",
   "files": [
-    "bbModules/**/*",
-    "scripts/**/*",
-    "tests/**/*"
+    "scripts",
+    "tests",
+    "bbtasks"
   ],
   "scripts": {
     "testProd": "webpack ./tests/index.js --config ./webpack.tests.config.js --target node",
