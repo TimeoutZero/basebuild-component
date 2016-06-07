@@ -5,7 +5,6 @@ module.exports = function(options){
       gutil   = require("gulp-util"),
       webpack = require("webpack"),
       named   = require('vinyl-named'),
-      path    = require('path'),
       mocha   = require('gulp-mocha'),
       webpackStream    = require('webpack-stream'),
       WebpackDevServer = require("webpack-dev-server"),
@@ -53,7 +52,7 @@ module.exports = function(options){
     // })
 
     // console.log(theServer);
-  })
+  });
 
 
   gulp.task('test:prod', ['bundleTest'], function () {
@@ -72,7 +71,7 @@ module.exports = function(options){
       }))
       .pipe(webpackStream(options.modules.unitTests.webpackTestConfig))
       .pipe(gulp.dest(options.tmp + "/"));
-  })
+  });
 
   var Server = require('karma').Server;
   gulp.task('test:karma', function (done) {
@@ -82,4 +81,4 @@ module.exports = function(options){
     }, function(){ done() }).start();
   });
 
-}
+};
