@@ -3,11 +3,6 @@
   "version": "0.1.5",
   "description": "Project based on BaseBuild for abstract components",
   "main": "./scripts/main.js",
-  "files": [
-    "scripts",
-    "tests",
-    "bbtasks"
-  ],
   "scripts": {
     "testProd": "webpack ./tests/index.js --config ./webpack.tests.config.js --target node",
     "testDev": "webpack-dev-server 'mocha?reporter=nyan&ui=tdd!./tests/index.js' --hot --inline --config webpack.tests.config.js",

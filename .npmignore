@@ -1,0 +1,6 @@
+demo/
+.DS_Store
+node_modules/
+.eslitrc.js
+.gitignore
+jsconfig.json
