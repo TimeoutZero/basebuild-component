@@ -30,6 +30,11 @@ module.exports = {
         }
       },
 
+      {
+        test: /\.(spec|mock)/,
+        loader: 'null-loader'
+      },
+
       /* JSON */
       { test: /\.json$/,
         loader: "null-loader",
