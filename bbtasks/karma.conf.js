@@ -1,4 +1,4 @@
-var webpack = require('webpack')
+
 var path = require('path');
 var webpackConfig = require(__dirname + '/../scripts/webpack.tests.config.js');
 webpackConfig.entry = {};

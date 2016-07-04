@@ -2,8 +2,8 @@
 
 module.exports = function(){
   var defaultOptions = {
-    src     : "./src",
-    dist    : './builds/release',
+    src     : "src",
+    dist    : 'builds/release',
     tmp     : './tmp',
     modules : {
       gulp: {

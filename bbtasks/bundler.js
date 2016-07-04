@@ -14,8 +14,8 @@ module.exports = function(options){
       }))
       .pipe(webpackStream(options.modules.bundler.webpackConfig))
       .pipe(gulp.dest(options.dist + "/"));
-  })
+  });
 
   gulp.task('build', ['bundle']);
 
-}
+};
