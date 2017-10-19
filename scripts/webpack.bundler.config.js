@@ -8,7 +8,9 @@ module.exports = {
     libraryTarget: "umd"
   },
   resolveLoader: {
-      root: path.join(__dirname, "../node_modules")
+    modules: [
+      path.join(__dirname, "../node_modules")
+    ]
   },
 
   module: {
@@ -22,11 +24,11 @@ module.exports = {
         loader: "coffee-loader" },
 
       /* ES6/Jsx */
-      { test: /\.jsx?$/,
-        loader: 'babel',
+      { test: /\.(js|jsx)$/,
+        loader: 'babel-loader',
         exclude: /(node_modules|bower_components)/,
         query: {
-          presets: [require.resolve('babel-preset-es2015')]
+          presets: ["env"]
         }
       },
 
