@@ -1,5 +1,5 @@
 'use strict';
-require('file?name=moduleA/[name].[ext]!./bower.json');
+require('file-loader?name=moduleA/[name].[ext]!./bower.json');
 
 module.exports = {
   name: "ModuleA",
