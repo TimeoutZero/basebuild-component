@@ -1,2 +1,2 @@
-module.expots = ->
+module.exports = ->
   "dep3 module"
