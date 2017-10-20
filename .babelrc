@@ -1,12 +1,15 @@
 {
   "env": {
-      "testing": {
-          "presets": [
-              "airbnb"
-          ]
-      }
+    "testing": {
+      "presets": [
+        "airbnb"
+      ]
+    }
   },
   "presets": [
-      ["airbnb", { "modules": false }]
+    [
+      "airbnb",
+      { "modules": true }
+    ]
   ]
 }
