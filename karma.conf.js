@@ -1,7 +1,7 @@
 const path = require('path');
 const webpackConfig = require(`${__dirname}/./scripts/webpack.tests.config.js`);
 
-const tests = `${process.cwd()}/./src/**/*.spec.js`;
+const tests = `${process.cwd()}/./src/**/*.spec.{js,coffee}`;
 
 module.exports = function (config) {
   config.set({
@@ -23,13 +23,6 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeWithoutSecurity'],
-    customLaunchers: {
-      ChromeWithoutSecurity: {
-        base: 'Chrome',
-        flags: ['--disable-web-security']
-      }
-    },
     singleRun: true,
     concurrency: Infinity
   });
