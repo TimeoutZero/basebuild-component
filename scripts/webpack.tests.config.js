@@ -1,69 +1,39 @@
-var path  = require("path");
-var webpack = require("webpack");
-var contextReplacementPluginCallback = function(options) {
-  options.request = options.request.replace("$projectRoot", process.cwd());
-  return options;
-};
-
-console.log("path.resolve: ", path.resolve(process.cwd() + '/src/'));
+const path = require("path");
+const webpack = require("webpack");
+const nodeExternals = require('webpack-node-externals');
+const dir = path.resolve('src');
 
 module.exports = {
-  entry: __dirname + "/../tests/index.js",
-  output: {
-    path: '/tests',
-    publicPath: '/tests/',
-    filename: 'test.build.js'
-  },
-  devtool: 'inline-source-map',
-  plugins : [
-    new webpack.ContextReplacementPlugin(/\$projectRoot.*/, contextReplacementPluginCallback)
-  ],
-  resolveLoader: {
-    modules: [
-      path.join(__dirname, "../node_modules")
-    ]
 
-  },
   module: {
-    loaders: [
-      {
-        test: /\.coffee$/,
-        loader: "coffee-loader"
-      },
-      {
-        test: /\.(js|jsx)$/,
-        loader: 'babel-loader',
-        exclude: /(node_modules|bower_components)/,
-        query: {
-          presets: ["env"]
-        }
-      },
-      {
-        test: /\.css$/,
-        loader: 'null-loader'
-      },
-      {
-        test: /(\.jpg|\.jpeg|\.png|\.gif)$/,
-        loader: 'null-loader'
-      }
-    ],
     rules: [
       {
-        test: /^(?!(.*\.spec\.js$|.*\.mock.js$)).*(\.js|\.jsx|\.coffee)$/,
+        test: /\.(js|jsx)/,
+        include: dir,
         enforce: "post",
-        loader: 'istanbul-instrumenter-loader',
-        query: {
-          esModules: true
-        },
-        include: [
-          process.cwd() + '/src/'
-        ]
-      }
+        loader: 'istanbul-instrumenter-loader'
+      },
+
+      {
+        test: /\.(js|jsx)$/,
+        use: "babel-loader",
+        exclude: /(node_modules|bower_components|\.(test|spec)\..+$)/
+      },
+
+      {
+        test: /\.coffee$/,
+        loader: "coffee-loader",
+        exclude: /(node_modules|bower_components|\.(test|spec)\..+$)/
+      },
     ]
   },
-  devServer: {
-    contentBase: "tests/",
-    host: "localhost",
-    port: "9123"
-  }
-};
+
+  output: {
+    devtoolModuleFilenameTemplate: '[absolute-resource-path]',
+    devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
+  },
+
+  target: 'node',
+  externals: [nodeExternals()],
+  devtool: "inline-cheap-module-source-map"
+}
