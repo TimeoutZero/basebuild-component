@@ -1,8 +1,9 @@
-'use strict';
-require('file-loader?name=moduleA/[name].[ext]!./bower.json');
+import 'file-loader?name=moduleA/[name].[ext]!./bower.json'
+import dep1 from './dep1'
+import dep2 from './dep2'
 
-module.exports = {
-  name: "ModuleA",
-  dep1: require("./dep1.js"),
-  dep2: require("./dep2.js")
+export default {
+  dep1: dep1(),
+  dep2: dep2(),
+  name: "ModuleA"
 };

@@ -8,16 +8,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)/,
+        test: /\.(js|jsx|coffee)/,
         include: dir,
         enforce: "post",
-        loader: 'istanbul-instrumenter-loader'
-      },
-
-      {
-        test: /\.(js|jsx)$/,
-        use: "babel-loader",
-        exclude: /(node_modules|bower_components|\.(test|spec)\..+$)/
+        loader: 'istanbul-instrumenter-loader',
+        query: {
+          esModules: true
+        }
       },
 
       {
@@ -25,6 +22,13 @@ module.exports = {
         loader: "coffee-loader",
         exclude: /(node_modules|bower_components|\.(test|spec)\..+$)/
       },
+
+      {
+        test: /\.(js|jsx)$/,
+        use: "babel-loader",
+        exclude: /(node_modules|bower_components|\.(test|spec)\..+$)/
+      }
+
     ]
   },
 

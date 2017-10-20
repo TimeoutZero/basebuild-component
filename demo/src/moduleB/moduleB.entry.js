@@ -1,8 +1,8 @@
 'use strict';
 require('file-loader?name=moduleB/[name].[ext]!./bower.json');
+var moduleBDep = require("./dep");
 
 module.exports = {
-  name: "ModuleB",
-  dep1: require("./dep3.js"),
-  dep2: require("./dep4.js")
+  name : "ModuleB",
+  dep  : moduleBDep(),
 };

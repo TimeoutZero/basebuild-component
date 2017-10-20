@@ -1,20 +1,22 @@
-var test = require('./moduleA.entry.js');
-var assert = require('chai').assert;
+import moduleA from './moduleA.entry';
+import moduleADep1 from './dep1';
+import moduleADep2 from './dep2';
+import { assert } from 'chai';
 
-describe('Array',  function()  {
-  describe('#indexOf()', function () {
-    describe('Line 3', function () {
-      describe('Line 4', function () {
-        describe('Line 5', function () {
-          it('should return -1 when the value is not present', function () {
-            assert.equal(0, [1,2,3].indexOf(1));
-            assert.equal(-1, [1,2,3].indexOf(0));
-          });
-          it('should return -1 when the value is not present 2', function () {
-            assert.equal(-1, [1,2,3].indexOf(5));
-          });
-        });
-      });
+describe('moduleA', () => {
+  describe('when imported', () => {
+
+    it('should have name defined', () => {
+      assert.equal('ModuleA', moduleA.name);
     });
+
+    it('should have dep1 defined', () => {
+      assert.equal(moduleADep1(), moduleA.dep1);
+    });
+
+    it('should have dep2 defined', () => {
+      assert.equal(moduleADep2(), moduleA.dep2);
+    });
+
   });
 });
