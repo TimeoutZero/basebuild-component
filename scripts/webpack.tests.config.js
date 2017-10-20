@@ -7,8 +7,9 @@ module.exports = {
 
   module: {
     rules: [
+
       {
-        test: /\.(js|jsx|coffee)/,
+        test: /\.(js|jsx|coffee)$/,
         include: dir,
         enforce: "post",
         loader: 'istanbul-instrumenter-loader',
@@ -18,15 +19,15 @@ module.exports = {
       },
 
       {
-        test: /\.coffee$/,
-        loader: "coffee-loader",
-        exclude: /(node_modules|bower_components|\.(test|spec)\..+$)/
+        test: /\.(js|jsx)$/,
+        loader: "babel-loader",
+        exclude: /(node_modules|bower_components|^(?!.*\.spec\.js$).*\.js$)/
       },
 
       {
-        test: /\.(js|jsx)$/,
-        use: "babel-loader",
-        exclude: /(node_modules|bower_components|\.(test|spec)\..+$)/
+        test: /\.coffee$/,
+        loader: "coffee-loader",
+        exclude: /(node_modules|bower_components|^(?!.*\.spec\.js$).*\.js$)/
       }
 
     ]
@@ -40,4 +41,5 @@ module.exports = {
   target: 'node',
   externals: [nodeExternals()],
   devtool: "inline-cheap-module-source-map"
+
 }

@@ -8,13 +8,13 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         use: "babel-loader",
-        exclude: /(node_modules|bower_components|\.(test|spec)\..+$)/
+        exclude: /(node_modules|bower_components|^(?!.*\.spec\.js$).*\.js$)/
       },
 
       {
         test: /\.coffee$/,
         loader: "coffee-loader",
-        exclude: /(node_modules|bower_components|\.(test|spec)\..+$)/
+        exclude: /(node_modules|bower_components|^(?!.*\.spec\.js$).*\.js$)/
       },
 
       {
