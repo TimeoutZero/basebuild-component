@@ -1,0 +1,12 @@
+{
+  "env": {
+      "testing": {
+          "presets": [
+              "airbnb"
+          ]
+      }
+  },
+  "presets": [
+      ["airbnb", { "modules": false }]
+  ]
+}
