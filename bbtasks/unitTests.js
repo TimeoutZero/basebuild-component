@@ -14,6 +14,10 @@ module.exports = function(options){
     `${cross_env} NODE_ENV=testing ${mocha_webpack} --webpack-config ../scripts/webpack.tests.config.js '${spec_files}'`
   ));
 
+  gulp.task('test:auto', shell.task(
+    `${cross_env} NODE_ENV=testing ${mocha_webpack} --watch --webpack-config ../scripts/webpack.tests.config.js '${spec_files}'`
+  ));
+
   gulp.task('test:coverage', shell.task(
     `${cross_env} NODE_ENV=testing nyc --temp-directory='${nyc_output_folder_path}' --instrument=false --source-map=false --include='src/**/!(*.spec).{js,coffee}' --reporter=lcov --reporter=text --report-dir='${process.cwd()}/coverage' ${mocha_webpack} --webpack-config ../scripts/webpack.tests.config.js '${spec_files}'`
   ));
