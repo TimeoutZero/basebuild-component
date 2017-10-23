@@ -9,7 +9,6 @@
   "author": "carloshpds <carloshpds@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "basebuild-component": "1.0.0",
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.8"
   }
