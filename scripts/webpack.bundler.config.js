@@ -46,7 +46,8 @@ module.exports = {
     extensions: [".js"],
     modules: [
       __dirname,
-      path.resolve(__dirname, "../node_modules"),
+      process.cwd(),
+      path.resolve(process.cwd(), "./node_modules")
     ]
   },
 
