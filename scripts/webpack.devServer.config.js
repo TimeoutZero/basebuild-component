@@ -7,11 +7,11 @@ const contextReplacementPluginCallback = function(options) {
 };
 
 module.exports = {
-  entry: __dirname + '/../tests/index.js',
+  entry: __dirname + '/../test-config/index.js',
 
   output: {
-    path: '/tests',
-    publicPath: '/tests/',
+    path: '/test-config',
+    publicPath: '/test-config/',
     filename: 'test.build.js'
   },
 

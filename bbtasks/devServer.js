@@ -10,7 +10,7 @@ module.exports = function(options){
       WebpackDevServer = require('webpack-dev-server');
 
   gulp.task('bundleTest', function(){
-    return gulp.src('../tests/index.js')
+    return gulp.src('../test-config/index.js')
       .pipe(webpackStream(options.modules.devServer.webpackTestConfig))
       .pipe(gulp.dest(options.tmp + '/'));
   });
@@ -31,7 +31,7 @@ module.exports = function(options){
     var theServer = new WebpackDevServer(compiler, {
         publicPath: '/tests/',
         filename: 'test.build.js',
-        contentBase: path.resolve(__dirname + '/../tests')
+        contentBase: path.resolve(__dirname + '/../test-config')
     });
 
     theServer.listen(8080, "localhost", function(err) {
