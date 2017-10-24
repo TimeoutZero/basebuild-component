@@ -47,7 +47,8 @@ module.exports = {
     modules: [
       __dirname,
       process.cwd(),
-      path.resolve(process.cwd(), "./node_modules")
+      path.resolve(process.cwd(), "./node_modules"),
+      "node_modules"
     ]
   },
 

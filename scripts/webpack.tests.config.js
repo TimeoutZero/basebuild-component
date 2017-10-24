@@ -28,10 +28,22 @@ module.exports = {
         test: /\.coffee$/,
         loader: "coffee-loader",
         exclude: /(node_modules|bower_components|^(?!.*\.spec\.js$).*\.js$)/
-      }
+      },
+
+      // {
+      //   test: path.resolve('c:\Users\bdfac\Documents\projects\basebuild-component\demo\node_modules\angular\angular.js'),
+      //   // include: /node_modules/,
+      //   use: "imports-loader?this=>global"
+      // }
 
     ]
   },
+
+  // plugins: [
+  //   new webpack.DefinePlugin({
+  //     angular: 'window.angular'
+  //   })
+  // ],
 
   output: {
     devtoolModuleFilenameTemplate: '[absolute-resource-path]',
@@ -39,7 +51,9 @@ module.exports = {
   },
 
   target: 'node',
-  externals: [nodeExternals()],
+  // externals: [nodeExternals({
+  //   whitelist: ['angular']
+  // })],
   devtool: "inline-cheap-module-source-map"
 
 }
