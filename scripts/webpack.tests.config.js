@@ -39,21 +39,25 @@ module.exports = {
     ]
   },
 
+  resolve: {
+    alias: {
+      angular: path.resolve(`${process.cwd()}/node_modules/angular/angular.js`)
+    }
+  },
+
   // plugins: [
   //   new webpack.DefinePlugin({
   //     angular: 'window.angular'
   //   })
   // ],
 
-  output: {
-    devtoolModuleFilenameTemplate: '[absolute-resource-path]',
-    devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
-  },
+  // output: {
+  //   devtoolModuleFilenameTemplate: '[absolute-resource-path]',
+  //   devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
+  // },
 
   target: 'node',
-  // externals: [nodeExternals({
-  //   whitelist: ['angular']
-  // })],
+  // externals: [nodeExternals()],
   devtool: "inline-cheap-module-source-map"
 
 }

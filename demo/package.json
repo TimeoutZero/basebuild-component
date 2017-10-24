@@ -11,5 +11,8 @@
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.8"
+  },
+  "devDependencies": {
+    "angular": "^1.6.6"
   }
 }
