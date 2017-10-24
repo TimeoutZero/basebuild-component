@@ -3,6 +3,7 @@
 module.exports = function(options){
 
   var gulp             = require(options.modules.gulp.uses),
+      path             = require('path'),
       gutil            = require('gulp-util'),
       webpack          = require('webpack'),
       webpackStream    = require('webpack-stream'),
@@ -17,7 +18,7 @@ module.exports = function(options){
   gulp.task("test:auto", function(callback){
     // Start a webpack-dev-server
     var configs = options.modules.devServer.webpackTestConfig;
-    configs.entry = "mocha-loader?ui=bdd!" + configs.entry;
+    configs.entry = "mocha-loader?ui=bdd!" + path.resolve(configs.entry);
     var compiler = webpack(configs);
 
     compiler.plugin("done", function(stats) {
@@ -30,7 +31,7 @@ module.exports = function(options){
     var theServer = new WebpackDevServer(compiler, {
         publicPath: '/tests/',
         filename: 'test.build.js',
-        contentBase: __dirname + '/../tests'
+        contentBase: path.resolve(__dirname + '/../tests')
     });
 
     theServer.listen(8080, "localhost", function(err) {

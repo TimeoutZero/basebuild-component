@@ -6,8 +6,6 @@ const contextReplacementPluginCallback = function(options) {
   return options;
 };
 
-console.log('path.resolve: ', path.resolve(process.cwd() + '/src/'));
-
 module.exports = {
   entry: __dirname + '/../tests/index.js',
 
@@ -26,7 +24,7 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.coffee'],
     modules: [
-      path.join(__dirname, '../node_modules'),
+      path.resolve(__dirname, '../node_modules'),
       'node_modules'
     ]
   },
