@@ -1,3 +1,5 @@
-module.exports =
+import dep from './dep.coffee'
+
+export default
+  dep: dep()
   name: "ModuleCoffee"
-  dep5: require "./dep5.coffee"

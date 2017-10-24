@@ -1,33 +1,25 @@
-'use strict';
-const path  = require("path");
+const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
-  output: {
-    filename: "[name]/[name].js",
-    library: "[name]",
-    libraryTarget: "umd"
-  },
-  resolveLoader: {
-      root: path.join(__dirname, "../node_modules")
-  },
 
   module: {
-    loaders: [
-      /* Styles */
-      { test: /\.css$/,
-        loader: "style!css" },
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        use: "babel-loader",
+        exclude: /(node_modules|bower_components|^(?!.*\.spec\.js$).*\.js$)/
+      },
 
-      /* Coffee */
-      { test: /\.coffee$/,
-        loader: "coffee-loader" },
+      {
+        test: /\.coffee$/,
+        loader: "coffee-loader",
+        exclude: /(node_modules|bower_components|^(?!.*\.spec\.js$).*\.js$)/
+      },
 
-      /* ES6/Jsx */
-      { test: /\.jsx?$/,
-        loader: 'babel',
-        exclude: /(node_modules|bower_components)/,
-        query: {
-          presets: [require.resolve('babel-preset-es2015')]
-        }
+      {
+        test: /\.css$/,
+        loader: "style!css"
       },
 
       {
@@ -35,10 +27,33 @@ module.exports = {
         loader: 'null-loader'
       },
 
-      /* JSON */
-      { test: /\.json$/,
+      {
+        test: /\.json$/,
         loader: "null-loader",
-        exclude: /(src)/ }
+        exclude: /(src)/
+      }
     ]
+  },
+
+  output: {
+    filename: "[name]/[name].js",
+    library: "[name]",
+    libraryTarget: "umd",
+    pathinfo: true
+  },
+
+  resolve: {
+    extensions: [".js"],
+    modules: [
+      __dirname,
+      process.cwd(),
+      path.resolve(process.cwd(), "./node_modules"),
+      "node_modules"
+    ]
+  },
+
+  resolveLoader: {
+    moduleExtensions: ['-loader']
   }
+
 };
