@@ -17,13 +17,14 @@ module.exports = {
     filename: 'test.build.js'
   },
 
-  devtool: 'inline-source-map',
+  devtool: 'cheap-module-eval-source-map',
 
   plugins : [
     new webpack.ContextReplacementPlugin(/\$projectRoot.*/, contextReplacementPluginCallback)
   ],
 
   resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.coffee'],
     modules: [
       path.join(__dirname, '../node_modules'),
       'node_modules'
@@ -35,15 +36,22 @@ module.exports = {
     rules: [
 
       {
-        test: /\.(js|jsx)$/,
-        use: 'babel-loader',
-        exclude: /(node_modules|bower_components)/
+        test: /\.(ts|tsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        use: 'ts-loader'
       },
 
       {
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        use: 'babel-loader'
+      },
+
+
+      {
         test: /\.coffee$/,
-        loader: 'coffee-loader',
-        exclude: /(node_modules|bower_components)/
+        exclude: /(node_modules|bower_components)/,
+        loader: 'coffee-loader'
       },
 
       {
