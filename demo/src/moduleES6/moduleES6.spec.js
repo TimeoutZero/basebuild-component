@@ -9,7 +9,6 @@ describe('moduleES6', () => {
   describe('when imported', () => {
 
     it('should have name defined', () => {
-      console.log(angular.module('teste'))
       assert.equal('ModuleES6', moduleES6.name);
     });
 
