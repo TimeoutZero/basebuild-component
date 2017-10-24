@@ -1,8 +1,4 @@
-var tests = require.context("$projectRoot/src", true, /.+\.spec\.js$/);
-tests.keys().forEach(tests);
+var context = require.context("$projectRoot/src", true, /.+\.spec\.(js|coffee)$/);
+context.keys().forEach(context);
 
-var components = require.context("$projectRoot/src", true, /.+(\.jsx?|\.coffee)$/);
-components.keys().forEach(components);
-
-
-module.exports = tests;
+module.exports = context;

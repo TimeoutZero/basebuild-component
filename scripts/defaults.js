@@ -11,10 +11,13 @@ module.exports = function(){
         notStart     : true,
         isExternal   : true
       },
-
       bundler : {
         defaultValue  : '../bbtasks/bundler.js',
         webpackConfig : require('./webpack.bundler.config.js')
+      },
+      devServer : {
+        defaultValue  : '../bbtasks/devServer.js',
+        webpackTestConfig : require('./webpack.devServer.config.js')
       },
       unitTests :{
         defaultValue      : '../bbtasks/unitTests.js',
