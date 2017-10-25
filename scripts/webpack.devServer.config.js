@@ -18,7 +18,13 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
 
   plugins : [
-    new webpack.ContextReplacementPlugin(/\$projectRoot.*/, contextReplacementPluginCallback)
+    new webpack.ContextReplacementPlugin(/\$projectRoot.*/, contextReplacementPluginCallback),
+    new webpack.ContextReplacementPlugin(
+      // The (\\|\/) piece accounts for path separators in *nix and Windows
+      /angular(\\|\/)core/,
+      process.cwd(), // location of your src
+      { }
+    )
   ],
 
   resolve: {
