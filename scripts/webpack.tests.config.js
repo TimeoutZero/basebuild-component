@@ -20,14 +20,25 @@ module.exports = {
 
       {
         test: /\.(js|jsx)$/,
-        loader: "babel-loader",
-        exclude: /(node_modules|bower_components|^(?!.*\.spec\.js$).*\.js$)/
+        exclude: /(node_modules|bower_components|^(?!.*\.spec\.js$).*\.js$)/,
+        options: {
+          env: {
+            testing: {
+              presets: [
+                ['airbnb', { 'modules': 'umd' }]
+              ]
+            }
+          },
+          presets: [
+            ['airbnb', { 'modules': 'umd' }]
+          ],
+        }
       },
 
       {
         test: /\.coffee$/,
-        loader: "coffee-loader",
-        exclude: /(node_modules|bower_components|^(?!.*\.spec\.js$).*\.js$)/
+        exclude: /(node_modules|bower_components|^(?!.*\.spec\.js$).*\.js$)/,
+        loader: "coffee-loader"
       },
 
       // {

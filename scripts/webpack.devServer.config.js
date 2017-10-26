@@ -53,7 +53,18 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
-        use: 'babel-loader'
+        options: {
+          env: {
+            testing: {
+              presets: [
+                ['airbnb', { 'modules': 'umd' }]
+              ]
+            }
+          },
+          presets: [
+            ['airbnb', { 'modules': 'umd' }]
+          ],
+        }
       },
 
 
