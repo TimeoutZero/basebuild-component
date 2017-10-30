@@ -3,7 +3,8 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "target": "es5",
-    "lib": ["es2015", "es2017", "dom"]
+    "lib": ["es2015", "es2017", "dom"],
+    "allowJs": true
   },
   "include": [
     "../../**/*"
