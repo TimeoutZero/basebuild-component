@@ -54,6 +54,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         options: {
+          loader: 'babel-loader',
           env: {
             testing: {
               presets: [
