@@ -1,6 +1,6 @@
 {
   "name": "basebuild-component",
-  "version": "1.0.0-rc.11",
+  "version": "1.0.0-rc.12",
   "description": "Project based on BaseBuild for abstract components",
   "main": "./scripts/main.js",
   "repository": {
@@ -52,7 +52,6 @@
     "karma-chai": "^0.1.0",
     "karma-coverage": "^1.1.1",
     "karma-mocha": "^1.3.0",
-    "karma-mocha-debug": "^0.1.2",
     "karma-mocha-reporter": "^2.2.5",
     "karma-sinon": "^1.0.5",
     "karma-sourcemap-loader": "^0.3.7",
