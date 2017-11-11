@@ -1,38 +1,48 @@
 const path = require("path");
-const webpack = require("webpack");
-const nodeExternals = require('webpack-node-externals');
+// const webpack = require("webpack");
+// const nodeExternals = require('webpack-node-externals');
 const dir = path.resolve('src');
 
 module.exports = {
-
   module: {
     rules: [
 
       {
-        test: /\.(js|jsx|coffee)$/,
-        include: dir,
-        enforce: "post",
-        loader: 'istanbul-instrumenter-loader',
-        query: {
-          esModules: true
+        test: /\.(ts|tsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'ts-loader',
+          options: {
+            configFile: path.resolve(__dirname , '../tsconfig.json')
+          }
         }
       },
+
+      // {
+      //   test: /\.(ts|tsx|js|jsx|coffee)$/,
+      //   include: dir,
+      //   enforce: "post",
+      //   loader: 'istanbul-instrumenter-loader',
+      //   query: {
+      //     esModules: true
+      //   }
+      // },
 
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components|^(?!.*\.spec\.js$).*\.js$)/,
-        options: {
-          env: {
-            testing: {
-              presets: [
-                ['airbnb', { 'modules': 'umd' }]
-              ]
-            }
-          },
-          presets: [
-            ['airbnb', { 'modules': 'umd' }]
-          ],
-        }
+        // options: {
+        //   env: {
+        //     testing: {
+        //       presets: [
+        //         ['airbnb', { 'modules': 'umd' }]
+        //       ]
+        //     }
+        //   },
+        //   presets: [
+        //     ['airbnb', { 'modules': 'umd' }]
+        //   ],
+        // }
       },
 
       {
@@ -50,10 +60,18 @@ module.exports = {
     ]
   },
 
+  // resolve: {
+  //   alias: {
+  //     angular: path.resolve(`${process.cwd()}/node_modules/angular/angular.js`)
+  //   }
+  // },
+
   resolve: {
-    alias: {
-      angular: path.resolve(`${process.cwd()}/node_modules/angular/angular.js`)
-    }
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.coffee'],
+    modules: [
+      path.resolve(__dirname, '../node_modules'),
+      'node_modules'
+    ]
   },
 
   // plugins: [
@@ -69,6 +87,6 @@ module.exports = {
 
   // target: 'node',
   // externals: [nodeExternals()],
-  devtool: "inline-cheap-module-source-map"
+  // devtool: "inline-cheap-module-source-map"
 
 }

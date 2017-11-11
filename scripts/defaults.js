@@ -21,6 +21,7 @@ module.exports = function(){
       },
       unitTests :{
         defaultValue      : '../bbtasks/unitTests.js',
+        mochaOptions      : '--ui "bdd" --colors true',
         webpackTestConfig : require('./webpack.tests.config.js')
       }
     }
