@@ -15,7 +15,7 @@ module.exports = function(options){
       .pipe(gulp.dest(options.tmp + '/'));
   });
 
-  gulp.task("test:auto", function(callback){
+  gulp.task("test:web-auto", function(callback){
     // Start a webpack-dev-server
     var configs = options.modules.devServer.webpackTestConfig;
     configs.entry = "mocha-loader?ui=bdd!" + path.resolve(configs.entry);

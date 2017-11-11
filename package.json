@@ -1,6 +1,6 @@
 {
   "name": "basebuild-component",
-  "version": "1.0.0-rc.13",
+  "version": "1.0.0-rc.14",
   "description": "Project based on BaseBuild for abstract components",
   "main": "./scripts/main.js",
   "repository": {
@@ -59,7 +59,7 @@
     "lodash": "^4.17.4",
     "mocha": "^3.5.3",
     "mocha-loader": "^1.1.1",
-    "mocha-webpack": "^1.0.0-rc.1",
+    "mocha-webpack": "^1.0.1",
     "null-loader": "^0.1.1",
     "nyc": "^11.2.1",
     "sinon": "^2.0.1",
