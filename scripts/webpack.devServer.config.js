@@ -1,12 +1,18 @@
-const path = require('path');
-const webpack = require('webpack');
-const dir = path.resolve(`${process.cwd()}/src/`);
+const path         = require('path');
+const webpack      = require('webpack');
+const webpackMerge = require('webpack-merge');
+const dir          = path.resolve(`${process.cwd()}/src/`);
+
+// let targets = ['web', 'webworker', 'node', 'async-node', 'node-webkit', 'electron-main'];
+let targets = ['web', 'node'];
+
+
 const contextReplacementPluginCallback = function(options) {
   options.request = options.request.replace('$projectRoot', process.cwd());
   return options;
 };
 
-module.exports = {
+const baseConfig =  {
   entry: __dirname + '/../test-config/index.js',
 
   output: {
@@ -91,3 +97,18 @@ module.exports = {
   }
 
 };
+
+targets = targets.map( (target) => {
+  let base = webpackMerge(baseConfig, {
+    target: target,
+    output: {
+      path: '/test-config',
+      publicPath: '/test-config/',
+      filename: 'test-config.' + target + '.js'
+    }
+  });
+
+
+  return base;
+});
+module.exports = targets;

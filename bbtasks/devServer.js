@@ -17,8 +17,10 @@ module.exports = function(options){
 
   gulp.task("test:auto", function(callback){
     // Start a webpack-dev-server
-    var configs = options.modules.devServer.webpackTestConfig;
-    configs.entry = "mocha-loader?ui=bdd!" + path.resolve(configs.entry);
+    configs = configs.map((config) => {
+      config.entry = "mocha-loader?ui=bdd!" + path.resolve(config.entry);
+      return config;
+    });
     var compiler = webpack(configs);
 
     compiler.plugin("done", function(stats) {

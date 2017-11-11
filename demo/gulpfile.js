@@ -15,4 +15,6 @@ if(gutil.env.prod){
   basebuildMainFile          = 'basebuild-component';
 }
 
+console.log('basebuildMainFile', basebuildMainFile);
+
 require(basebuildMainFile)(options);
