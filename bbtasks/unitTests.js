@@ -24,7 +24,7 @@ module.exports = function(options){
   let coverageCommand      = `${nyc} --temp-directory="${nyc_output_folder_path}" --instrument=true --source-map=false --include="${src_files}" --reporter=lcov --reporter=text --report-dir="${process.cwd()}/coverage" `;
   const commonShellOptions = {verbose: true};
 
-  gulp.task('test:generate-merged-file-config', () => {
+  gulp.task('test:generate-merged-config-file', () => {
     let config      = JSON.stringify(moduleOptions.webpackConfig, regExpJSONReplacer, 2);
     config = config.replace(/"__REGEXP\s/gm, '');
 
@@ -37,9 +37,9 @@ module.exports = function(options){
     let regexps =  config.match(regexpToFindRegexp);
     if(regexps) {
       regexps.forEach((regexp) => {
-        regexp    = regexp.replace(/\/\\\\/g, '/\\');  // Recovers the begging og regex (undo the string escape)
-        let newRegexp = regexp.replace(/"$/, '');
-        config    = config.replace(regexp, newRegexp);
+        let newRegexp = regexp.replace(/\/\\\\/g, '/\\');  // Recovers the begging og regex (undo the string escape)
+        newRegexp = newRegexp.replace(/"$/, '');
+        config    = config.replace(`${regexp}`, newRegexp);
       });
     }
 
@@ -49,17 +49,17 @@ module.exports = function(options){
       .pipe(gulp.dest(moduleOptions.mergedUserOptionsDir))
   })
 
-  gulp.task('test:node', ['test:generate-merged-file-config'], shell.task([
+  gulp.task('test:node', ['test:generate-merged-config-file'], shell.task([
     testNodeCommand
     ], commonShellOptions)
   );
 
-  gulp.task('test:node-auto', ['test:generate-merged-file-config'], shell.task([
+  gulp.task('test:node-auto', ['test:generate-merged-config-file'], shell.task([
     `${testNodeCommand} --watch true`
     ], commonShellOptions)
   );
 
-  gulp.task('test:coverage', ['test:generate-merged-file-config'], shell.task([
+  gulp.task('test:coverage', ['test:generate-merged-config-file'], shell.task([
       `${coverageCommand} ${mocha_webpack} --webpack-config ${webpack_config} "${spec_files}"`
     ], commonShellOptions)
   );
