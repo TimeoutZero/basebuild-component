@@ -6,6 +6,12 @@ let options = {
   modules : {
     gulp : {
       uses: '../demo/node_modules/gulp'
+    },
+
+    unitTests: {
+      webpackConfig: {
+        target: 'node'
+      }
     }
   }
 };

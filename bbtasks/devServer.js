@@ -11,13 +11,13 @@ module.exports = function(options){
 
   gulp.task('bundleTest', function(){
     return gulp.src('../test-config/index.js')
-      .pipe(webpackStream(options.modules.devServer.webpackTestConfig))
+      .pipe(webpackStream(options.modules.devServer.webpackConfig))
       .pipe(gulp.dest(options.tmp + '/'));
   });
 
   gulp.task("test:web-auto", function(callback){
     // Start a webpack-dev-server
-    var configs = options.modules.devServer.webpackTestConfig;
+    var configs = options.modules.devServer.webpackConfig;
     configs.entry = "mocha-loader?ui=bdd!" + path.resolve(configs.entry);
     var compiler = webpack(configs);
 

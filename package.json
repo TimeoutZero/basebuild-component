@@ -41,6 +41,7 @@
     "cross-env": "^5.1.0",
     "file-loader": "^1.1.5",
     "gulp-debug": "^3.1.0",
+    "gulp-file": "^0.3.0",
     "gulp-istanbul": "^1.1.2",
     "gulp-mocha": "^4.3.1",
     "gulp-shell": "^0.6.3",
