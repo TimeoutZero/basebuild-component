@@ -5,3 +5,5 @@ demo/build/
 demo/coverage/
 demo/builds/
 demo/tmp/
+
+webpack.merged-user-options.config.js
