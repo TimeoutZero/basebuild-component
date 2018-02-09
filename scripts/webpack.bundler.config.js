@@ -18,27 +18,28 @@ module.exports = {
 
       {
         test: /\.(js|jsx)$/,
-        use:  {
-          loader: "babel-loader",
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
           options: {
+            env: {
+              testing: {
+                presets: [
+                  ['airbnb', { 'modules': 'umd' }]
+                ]
+              }
+            },
             presets: [
-              ["env", {
-                "targets": {
-                  "browsers": ["last 2 versions", "safari >= 7"],
-                  uglify: true
-                }
-              }]
-            ]
+              ['airbnb', { 'modules': 'umd' }]
+            ],
           }
-        },
-
-        exclude: /(node_modules|bower_components|^(?!.*\.spec\.js$).*\.js$)/
+        }
       },
 
       {
         test: /\.coffee$/,
         loader: "coffee-loader",
-        exclude: /(node_modules|bower_components|^(?!.*\.spec\.js$).*\.js$)/
+        exclude: /(node_modules|bower_components)/,
       },
 
       {
