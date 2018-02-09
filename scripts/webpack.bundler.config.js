@@ -38,8 +38,15 @@ module.exports = {
 
       {
         test: /\.coffee$/,
-        loader: "coffee-loader",
         exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'coffee-loader',
+          options: {
+            transpile: {
+              presets: ['env']
+            }
+          }
+        }
       },
 
       {

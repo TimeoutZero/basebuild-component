@@ -70,11 +70,17 @@ module.exports = {
         }
       },
 
-
       {
         test: /\.coffee$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'coffee-loader'
+        use: {
+          loader: 'coffee-loader',
+          options: {
+            transpile: {
+              presets: ['env']
+            }
+          }
+        }
       },
 
       {
