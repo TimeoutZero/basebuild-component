@@ -2,7 +2,6 @@ import moduleTS from './moduleTS.entry';
 import moduleTSDep1 from './dep1';
 import moduleTSDep2 from './dep2';
 import { assert } from 'chai';
-const fs = require('fs');
 
 import * as angular from 'angular';
 
@@ -19,10 +18,6 @@ describe('moduleTS', () => {
 
     it('should have dep2 defined', () => {
       assert.equal(moduleTSDep2(), moduleTS.dep2);
-    });
-
-    it('xpto', () => {
-      assert.exists(fs);
     });
 
   });

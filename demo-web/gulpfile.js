@@ -5,12 +5,12 @@ let basebuildMainFile = '../scripts/main.js';
 let options = {
   modules : {
     gulp : {
-      uses: '../demo/node_modules/gulp'
+      uses: '../demo-web/node_modules/gulp'
     },
 
     unitTests: {
       webpackConfig: {
-        target: 'node'
+        target: 'web'
       }
     }
   }
