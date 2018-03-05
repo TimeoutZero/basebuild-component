@@ -1,10 +1,14 @@
 'use strict';
 
+const path = require('path');
+
 module.exports = function(){
   var defaultOptions = {
     src     : "src",
     dist    : 'builds/release',
     tmp     : './tmp',
+    regexpToFindRegexp: /\/((?![*+?])(?:[^\r\n\[/\\]|\\.|\[(?:[^\r\n\]\\]|\\.)*\])+)\/((?:g(?:im?|mi?)?|i(?:gm?|mg?)?|m(?:gi?|ig?)?)?)/,
+
     modules : {
       gulp: {
         defaultValue : 'gulp'  ,
@@ -17,15 +21,22 @@ module.exports = function(){
       },
       devServer : {
         defaultValue  : '../bbtasks/devServer.js',
-        webpackTestConfig : require('./webpack.devServer.config.js')
+        webpackConfig : require('./webpack.devServer.config.js')
       },
       unitTests :{
         defaultValue      : '../bbtasks/unitTests.js',
         mochaOptions      : '--ui "bdd" --colors true',
-        webpackTestConfig : require('./webpack.tests.config.js')
+
+        webpackConfig : require('./webpack.tests.config.js')
       }
     }
   };
+
+
+  // Unit Tests Module
+  defaultOptions.modules.unitTests.mergedUserOptionsFileName = 'webpack.merged-user-options.config.js';
+  defaultOptions.modules.unitTests.mergedUserOptionsDir  = `${__dirname}/../test-config`;
+  defaultOptions.modules.unitTests.mergedUserOptionsFilePath = path.resolve(`${defaultOptions.modules.unitTests.mergedUserOptionsDir}/${defaultOptions.modules.unitTests.mergedUserOptionsFileName}`);
 
   // Common initial properties
   for(let key in defaultOptions.modules){

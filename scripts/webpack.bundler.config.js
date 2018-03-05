@@ -6,6 +6,17 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(ts|tsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'ts-loader',
+          options: {
+            configFile: path.resolve(__dirname , '../tsconfig.json')
+          }
+        }
+      },
+
+      {
         test: /\.(js|jsx)$/,
         use: "babel-loader",
         exclude: /(node_modules|bower_components|^(?!.*\.spec\.js$).*\.js$)/
@@ -43,7 +54,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".js"],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.coffee'],
     modules: [
       __dirname,
       process.cwd(),
